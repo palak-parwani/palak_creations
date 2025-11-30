@@ -1,0 +1,39 @@
+.bannerWrap {
+  width: 100%;
+  height: 100%; 
+  position: relative;
+  overflow: hidden;
+}
+
+:global(.slick-slide) img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+
+:global(.slick-dots) {
+  bottom: 16px;
+  display: flex !important;
+  justify-content: center;
+  gap: 0px;
+}
+
+:global(.slick-dots li button:before) {
+  font-size: 13px;
+  color: #ffffffcc;
+  opacity: 1;
+}
+
+:global(.slick-dots li.slick-active button:before) {
+  color: #b41935 !important;
+  opacity: 1;
+  transform: scale(1.15);
+  font-size: 14px;
+}
+
+:global(.slick-dots li) {
+  margin: 0 4px;
+}
+

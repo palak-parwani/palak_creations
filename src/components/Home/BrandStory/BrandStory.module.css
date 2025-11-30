@@ -1,0 +1,80 @@
+.section {
+  padding: 100px 0;
+  background: #fff7f8;
+  position: relative;
+  overflow: hidden;
+}
+
+/* MOTIF BEHIND CONTENT */
+.motif {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  height: 380px;
+  background: url("/assets/mandala.svg") no-repeat center/contain;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.content {
+  text-align: center;
+  position: relative;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* TITLES */
+.heading {
+  font-size: 34px;
+  font-weight: 700;
+  color: #5b0f2d;
+  letter-spacing: 1px;
+}
+
+.line {
+  width: 80px;
+  height: 3px;
+  background: #d2a854;
+  margin: 12px auto 25px;
+  border-radius: 4px;
+}
+
+/* QUOTE */
+.quote {
+  font-size: 22px;
+  font-style: italic;
+  color: #7b3b52;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* PARAGRAPH */
+.text {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+/* SIGNATURE */
+.signature {
+  font-size: 18px;
+  font-style: italic;
+  color: #8d405b;
+  font-weight: 600;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+  .heading {
+    font-size: 28px;
+  }
+  .quote {
+    font-size: 18px;
+  }
+}
