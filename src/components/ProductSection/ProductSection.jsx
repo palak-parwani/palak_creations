@@ -30,7 +30,7 @@ const ProductSection = ({ category, subcategory }) => {
     {
       id: 'marsha-maxi-dress-001',
       name: 'MARSHA MAXI DRESS',
-      image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&h=600&fit=crop',
+      image: '/assets/suitsets1.jpg',
       originalPrice: 4749,
       salePrice: 1199,
       discount: '75% off',
@@ -41,7 +41,7 @@ const ProductSection = ({ category, subcategory }) => {
     {
       id: 'cassia-maxi-dress-002',
       name: 'CASSIA MAXI DRESS',
-      image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500&h=600&fit=crop',
+      image: '/assets/suitsets8.jpg',
       originalPrice: 4749,
       salePrice: 1399,
       discount: '71% off',
@@ -52,7 +52,7 @@ const ProductSection = ({ category, subcategory }) => {
     {
       id: 'sorbet-yellow-ikat-003',
       name: 'SORBET YELLOW IKAT DRESS',
-      image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500&h=600&fit=crop',
+      image: '/assets/cord1.jpg',
       originalPrice: 3749,
       salePrice: 1399,
       discount: '63% off',
@@ -63,7 +63,7 @@ const ProductSection = ({ category, subcategory }) => {
     {
       id: 'multicolour-floral-004',
       name: 'MULTICOLOUR ANIMATED FLORAL DRESS',
-      image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500&h=600&fit=crop',
+      image: '/assets/lehnga1.jpg',
       originalPrice: 3749,
       salePrice: 999,
       discount: '73% off',
@@ -74,7 +74,7 @@ const ProductSection = ({ category, subcategory }) => {
     {
       id: 'floral-print-maxi-005',
       name: 'FLORAL PRINT MAXI DRESS',
-      image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&h=600&fit=crop',
+      image: '/assets/suitsets5.jpg',
       originalPrice: 3999,
       salePrice: 1299,
       discount: '67% off',
@@ -85,7 +85,7 @@ const ProductSection = ({ category, subcategory }) => {
     {
       id: 'white-cotton-dress-006',
       name: 'WHITE COTTON DRESS',
-      image: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=500&h=600&fit=crop',
+      image: '/assets/suitsets7.jpg',
       originalPrice: 2999,
       salePrice: 899,
       discount: '70% off',
@@ -96,7 +96,7 @@ const ProductSection = ({ category, subcategory }) => {
     {
       id: 'striped-midi-dress-007',
       name: 'STRIPED MIDI DRESS',
-      image: 'https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?w=500&h=600&fit=crop',
+      image: '/assets/cord3.jpg',
       originalPrice: 3499,
       salePrice: 1099,
       discount: '69% off',
@@ -107,7 +107,7 @@ const ProductSection = ({ category, subcategory }) => {
     {
       id: 'elegant-white-dress-008',
       name: 'ELEGANT WHITE DRESS',
-      image: 'https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=500&h=600&fit=crop',
+      image: '/assets/cord2.jpg',
       originalPrice: 4299,
       salePrice: 1499,
       discount: '65% off',
@@ -142,7 +142,10 @@ const ProductSection = ({ category, subcategory }) => {
             <option value="featured">Featured</option>
             <option value="price-low">Price: Low to High</option>
             <option value="price-high">Price: High to Low</option>
-            <option value="newest">Newest</option>
+            <option value="newest">Best Selling</option>
+            <option value="newest">Alphabetically, A-Z</option>
+            <option value="newest">Alphabetically, Z-A</option>
+            <option value="newest">% Sale off</option>
           </select>
         </div>
       </div>

@@ -17,17 +17,17 @@ export default function BestSellers() {
 
   const images = [
     {
-      url: "/assets/suit4.jpg",
+      url: "/assets/suitsets3.jpg",
       title: "Summer Collection",
       desc: "All types of wear in ethnic",
     },
     {
-      url: "/assets/suit4.jpg",
+      url: "/assets/suitsets5.jpg",
       title: "New Arrivals",
       desc: "All types of wear in ethnic",
     },
     {
-      url: "/assets/suit4.jpg",
+      url: "/assets/suitsets8.jpg",
       title: "Best Sellers",
       desc: "All types of wear in ethnic",
     },

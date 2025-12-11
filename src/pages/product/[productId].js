@@ -15,8 +15,8 @@ export default function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
   const [showOffers, setShowOffers] = useState(true);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  // const [isCartOpen, setIsCartOpen] = useState(false);
+  // const [cartItems, setCartItems] = useState([]);
 
   // Sample product data (replace with API call)
   const product = {
@@ -293,12 +293,12 @@ export default function ProductDetail() {
       </div>
 
       {/* Cart Sidebar */}
-      <CartSidebar
+      {/* <CartSidebar
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
         cartItems={cartItems}
         setCartItems={setCartItems}
-      />
+      /> */}
       
     </>
   );

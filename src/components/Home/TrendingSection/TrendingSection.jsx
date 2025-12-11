@@ -19,7 +19,7 @@ export default function TrendingSection() {
       strikeprice:"₹9,998",
       price: "₹9,998",
       sizes: ["S", "M"],
-      img: "/assets/suit5.jpg",
+      img: "/assets/suitsets5.jpg",
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ export default function TrendingSection() {
       strikeprice:"₹9,998",
       price: "₹7,998",
       sizes: ["XS", "S", "M", "L", "XL", "2XL"],
-      img: "/assets/suit2.jpg",
+      img: "/assets/suitsets2.jpg",
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export default function TrendingSection() {
       strikeprice:"₹9,998",
       price: "₹8,998",
       sizes: ["S/M", "L/XL"],
-      img: "/assets/suit4.jpg",
+      img: "/assets/suitsets5.jpg",
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ export default function TrendingSection() {
       strikeprice:"₹9,998",
       price: "₹9,998",
       sizes: ["XS", "S", "L", "XL"],
-      img: "/assets/suit1.jpg",
+      img: "/assets/suitsets1.jpg",
     },
     {
       id: 5,
@@ -51,7 +51,7 @@ export default function TrendingSection() {
       strikeprice:"₹9,998",
       price: "₹9,998",
       sizes: ["XS", "S", "L", "XL"],
-      img: "/assets/suit5.jpg",
+      img: "/assets/suitsets6.jpg",
     },
     {
       id: 6,
@@ -59,7 +59,7 @@ export default function TrendingSection() {
       strikeprice:"₹9,998",
       price: "₹9,998",
       sizes: ["XS", "S", "L", "XL"],
-      img: "/assets/suit1.jpg",
+      img: "/assets/suitsets7.jpg",
     },
   ];
 

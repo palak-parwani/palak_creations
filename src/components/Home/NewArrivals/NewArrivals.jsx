@@ -9,56 +9,56 @@ export default function NewArrivals() {
       name: "Pink Floral Print Kurta Set",
       price: "₹1,299",
       save: "15% OFF",
-      img: "/assets/suit5.jpg",
+      img: "/assets/cord1.jpg",
     },
     {
       id: 2,
       name: "Wine Embroidered Suit Set",
       price: "₹1,999",
       save: "15% OFF",
-      img: "/assets/suit5.jpg",
+      img: "/assets/cord3.jpg",
     },
     {
       id: 3,
       name: "Beige Cotton Straight Kurta",
       price: "₹899",
       save: "16% OFF",
-      img: "/assets/suit5.jpg",
+      img: "/assets/ethnic1.jpg",
     },
     {
       id: 4,
       name: "Sky Blue Printed Kurta Set",
       price: "₹1,499",
       save: "20% OFF",
-      img: "/assets/suit5.jpg",
+      img: "/assets/lehnga1.jpg",
     },
     {
       id: 5,
       name: "Red Organza Suit Set",
       price: "₹2,299",
       save: "15% OFF",
-      img: "/assets/suit5.jpg",
+      img: "/assets/suitsets5.jpg",
     },
     {
       id: 6,
       name: "Yellow Block Print Kurta",
       price: "₹799",
       save: "18% OFF",
-      img: "/assets/suit5.jpg",
+      img: "/assets/suitsets2.jpg",
     },
     {
       id: 7,
       name: "Mustard Anarkali Suit Set",
       price: "₹2,499",
       save: "17% OFF",
-      img: "/assets/suit5.jpg",
+      img: "/assets/suitsets7.jpg",
     },
     {
       id: 8,
       name: "Teal Printed Kurta Set",
       price: "₹1,299",
       save: "15% OFF",
-      img: "/assets/suit5.jpg",
+      img: "/assets/suitsets8.jpg",
     },
   ];
 
@@ -71,32 +71,31 @@ export default function NewArrivals() {
         <div className={styles.grid}>
           {arrivals.map((item) => (
             <div key={item.id} className={styles.card}>
-             <div className={styles.imgWrap}>
-  <img src={item.img} alt={item.name} className={styles.img} />
+              <div className={styles.imgWrap}>
+                <img src={item.img} alt={item.name} className={styles.img} />
 
-  {/* NEW TAG */}
-  <span className={styles.tag}>NEW</span>
+                {/* NEW TAG */}
+                <span className={styles.tag}>NEW</span>
 
-  {/* WISHLIST */}
-  <button className={styles.wishlist}>
-    <FaRegHeart size={16} />
-  </button>
+                {/* WISHLIST */}
+                <button className={styles.wishlist}>
+                  <FaRegHeart size={16} />
+                </button>
 
-  {/* ADD TO BAG */}
-  <div className={styles.addToBag}>
-    <RiShoppingBagLine size={17} />
-  </div>
+                {/* ADD TO BAG */}
+                <div className={styles.addToBag}>
+                  <RiShoppingBagLine size={17} />
+                </div>
 
-  {/* SIZE OVERLAY ON HOVER */}
-  <div className={styles.sizesWrap}>
-    {["XS", "S", "M", "L", "XL", "2XL"].map((size, i) => (
-      <span key={i} className={styles.sizeBox}>
-        {size}
-      </span>
-    ))}
-  </div>
-</div>
-
+                {/* SIZE OVERLAY ON HOVER */}
+                <div className={styles.sizesWrap}>
+                  {["XS", "S", "M", "L", "XL", "2XL"].map((size, i) => (
+                    <span key={i} className={styles.sizeBox}>
+                      {size}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
               <p className={styles.name}>{item.name}</p>
               <div className="d-flex justify-content-start align-items-center gap-2">
@@ -108,10 +107,7 @@ export default function NewArrivals() {
           ))}
         </div>
         <div className="d-flex justify-content-center align-items-center">
-           
-      <button className={styles.btnText}>VIEW ALL
-      </button>
-    
+          <button className={styles.btnText}>VIEW ALL</button>
         </div>
       </div>
     </section>

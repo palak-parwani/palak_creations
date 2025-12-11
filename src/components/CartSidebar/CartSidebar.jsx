@@ -92,7 +92,7 @@ import { X, Minus, Plus } from 'lucide-react';
 import { useRouter } from 'next/router';
 import styles from './CartSidebar.module.css';
 
-export default function CartSidebar({ isOpen, onClose, cartItems, setCartItems }) {
+export default function CartSidebar({ isOpen, onClose, cartItems, setCartItems }){
   const router = useRouter();
 
   const updateQuantity = (itemId, newQuantity) => {
@@ -119,9 +119,11 @@ export default function CartSidebar({ isOpen, onClose, cartItems, setCartItems }
 
   if (!isOpen) return null;
 
+  
+
   return (
     <>
-      <div className={styles.overlay} onClick={onClose} />
+     <div className={styles.overlay} onClick={onClose} />
       <div className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ''}`}>
         <div className={styles.header}>
           <h2 className={styles.title}>Shopping Cart</h2>

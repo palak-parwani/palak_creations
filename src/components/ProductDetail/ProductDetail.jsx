@@ -293,12 +293,12 @@ export default function ProductDetail() {
       </div>
 
       {/* Cart Sidebar */}
-      <CartSidebar
+      {/* <CartSidebar
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
         cartItems={cartItems}
         setCartItems={setCartItems}
-      />
+      /> */}
      
     </>
   );

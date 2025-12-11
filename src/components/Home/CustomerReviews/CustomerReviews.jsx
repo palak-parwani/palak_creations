@@ -11,28 +11,28 @@ export default function CustomerReviews() {
   const reviews = [
     {
       id: 1,
-      img: "/assets/suit1.jpg",
+      img: "/assets/suitsets1.jpg",
       name: "Ayesha",
       rating: 5,
       text: "Amazing quality! Loved the fabric and finishing.",
     },
     {
       id: 2,
-      img: "/assets/suit1.jpg",
+      img: "/assets/ethnic1.jpg",
       name: "Ritika",
       rating: 4,
       text: "Perfect fitting and very elegant!",
     },
     {
       id: 3,
-      img: "/assets/suit1.jpg",
+      img: "/assets/cord3.jpg",
       name: "Simran",
       rating: 5,
       text: "Premium designs. Worth every penny!",
     },
     {
       id: 4,
-      img: "/assets/suit1.jpg",
+      img: "/assets/suit2.jpg",
       name: "Pooja",
       rating: 5,
       text: "Fast delivery and great quality.",
@@ -46,7 +46,7 @@ export default function CustomerReviews() {
     },
     {
       id: 6,
-      img: "/assets/suit1.jpg",
+      img: "/assets/suitsets6.jpg",
       name: "Shalini",
       rating: 5,
       text: "Loved the stitching and comfort.",
