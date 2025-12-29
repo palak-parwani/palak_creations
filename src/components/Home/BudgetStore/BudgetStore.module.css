@@ -38,12 +38,10 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.75),
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0)
-  );
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0));
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -98,12 +96,10 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.75),
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0)
-  );
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0));
   padding-bottom: 25px;
 }
 
@@ -140,4 +136,37 @@
 /* Button hover effect */
 .ctaButton:hover {
   background: #f2dcdc;
+}
+
+/* ================= MOBILE SLIDER DOTS ================= */
+
+@media (max-width: 768px) {
+  .mobileSlider {
+    padding: 0 0px;
+  }
+
+  /* Always show CTA on mobile */
+  .ctaButton {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Slick dots styling */
+  .mobileSlider :global(.slick-dots) {
+    bottom: -25px;
+  }
+
+  .mobileSlider :global(.slick-dots li button:before) {
+    font-size: 8px;
+    color: #bbb;
+    opacity: 1;
+  }
+
+  .mobileSlider :global(.slick-dots li.slick-active button:before) {
+    color: #000;
+  }
+
+  .section {
+    padding: 22px 20px;
+  }
 }

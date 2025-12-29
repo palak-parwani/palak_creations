@@ -64,9 +64,9 @@ export default function NewArrivals() {
 
   return (
     <section className="standard-padding">
-      <div className="container">
-        <h2 className={styles.heading}>New Arrivals</h2>
-        <p className={styles.subheading}>Fresh styles added just for you.</p>
+      <div>
+        <h2 className="heading">New Arrivals</h2>
+        <p className="desc">Fresh styles added just for you.</p>
 
         <div className={styles.grid}>
           {arrivals.map((item) => (
@@ -98,9 +98,11 @@ export default function NewArrivals() {
               </div>
 
               <p className={styles.name}>{item.name}</p>
-              <div className="d-flex justify-content-start align-items-center gap-2">
-                <p className={styles.strikeprice}>{item.price}</p>
-                <p className={styles.price}>{item.price}</p>
+              <div className="d-flex justify-content-start align-items-md-center align-items-start flex-md-row flex-column gap-0 gap-md-2">
+                <div className="d-flex gap-1 align-items-center">
+                  <p className={styles.strikeprice}>{item.price}</p>
+                  <p className={styles.price}>{item.price}</p>
+                </div>
                 <p className={styles.save}>{item.save}</p>
               </div>
             </div>

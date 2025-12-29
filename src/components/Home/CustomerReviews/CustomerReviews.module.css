@@ -9,7 +9,8 @@
   justify-content: space-between;
   align-items: end;
 }
-.staycationPeaceHead{
+
+.staycationPeaceHead {
   font-weight: 900;
   font-size: 32px;
 }
@@ -47,11 +48,9 @@
 
 .packageItem {
   width: 100%;
-  min-height: 200px;
-  border-radius: 10px;
-  background: white;
-  padding: 12px;
-  box-shadow: 0px 4px 18px #00000008;
+  background: transparent;
+  padding: 5px;
+  box-shadow: none;
 }
 
 /* REVIEW CARD STYLE */
@@ -95,15 +94,69 @@
   color: #5b0f2d;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE FIX ================= */
+
+/* Laptop */
 @media (max-width: 1024px) {
   .packagesBox {
-    padding: 25px 70px;
+    padding: 30px 60px;
+  }
+
+  .staycationPeaceHead {
+    font-size: 28px;
   }
 }
 
+/* Tablet */
 @media (max-width: 800px) {
   .packagesBox {
-    padding: 25px 35px;
+    padding: 25px 30px;
+  }
+
+  .customPeaceOfMindDiv {
+    align-items: center;
+  }
+
+  .staycationPeaceHead {
+    font-size: 24px;
+  }
+
+  .packageItemdiv {
+    padding: 0 6px;
+  }
+
+  /* Hide arrows on tablet & below */
+  .customSliderArrows {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .packagesBox {
+    padding: 20px 16px;
+  }
+
+  .customPeaceOfMindDiv {
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .staycationPeaceHead {
+    font-size: 22px;
+  }
+
+  .packageItem {
+    padding: 3px;
+  }
+
+  .reviewText {
+    font-size: 13px;
+  }
+
+  .reviewName {
+    font-size: 13px;
   }
 }

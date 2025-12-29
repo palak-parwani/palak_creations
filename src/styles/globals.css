@@ -1,22 +1,22 @@
 @font-face {
   font-family: "Allrounder Grotesk Test Bold";
-  src: url("../../public/fonts/AllrounderGroteskTest-Bold.otf")
-    format("opentype");
-  font-display: swap; /* 👈 important */
+  src: url("../../public/fonts/AllrounderGroteskTest-Bold.otf") format("opentype");
+  font-display: swap;
+  /* 👈 important */
 }
 
 @font-face {
   font-family: "Allrounder Grotesk Test Regular";
-  src: url("../../public/fonts/AllrounderGroteskTest-Regular.otf")
-    format("opentype");
-  font-display: swap; /* 👈 important */
+  src: url("../../public/fonts/AllrounderGroteskTest-Regular.otf") format("opentype");
+  font-display: swap;
+  /* 👈 important */
 }
 
 @font-face {
   font-family: "Allrounder Grotesk Test Meduim";
-  src: url("../../public/fonts/AllrounderGroteskTest-Medium.otf")
-    format("opentype");
-  font-display: swap; /* 👈 important */
+  src: url("../../public/fonts/AllrounderGroteskTest-Medium.otf") format("opentype");
+  font-display: swap;
+  /* 👈 important */
 }
 
 html,
@@ -36,30 +36,50 @@ body {
   margin: 0;
 }
 
-a{
+a {
   color: inherit;
   text-decoration: none;
 }
+
 .pageWithFixedNavbar {
-  padding-top: 72px; 
+  padding-top: 72px;
 }
 
 .standard-padding {
   padding: 35px 120px;
 }
-.heading{
-    font-size: 28px;
-    color: #5b0f2d;
-    text-align: center;
+
+.heading {
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 5px;
 }
+
+.desc {
+  font-size: 16px;
+  color: #777;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 @media (max-width: 1280px) {
   .standard-padding {
     padding: 35px 90px;
   }
 }
+
 @media (max-width: 1024px) {
   .standard-padding {
-    padding: 30px 90px;
+    padding: 30px 70px;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  .desc {
+    font-size: 14px;
   }
 }
 
@@ -73,4 +93,14 @@ a{
   .standard-padding {
     padding: 22px 20px;
   }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .desc {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
 }

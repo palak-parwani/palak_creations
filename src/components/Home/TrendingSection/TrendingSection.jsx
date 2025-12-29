@@ -1,12 +1,8 @@
 import Slider from "react-slick";
 import styles from "./TrendingSection.module.css";
-import { FiHeart } from "react-icons/fi";
-import { BsBag } from "react-icons/bs";
-
-import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
-import { RiShoppingBagLine } from "react-icons/ri";
+import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
-import { useState } from "react";
+import { RiShoppingBagLine } from "react-icons/ri";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 import Image from "next/image";
@@ -16,7 +12,7 @@ export default function TrendingSection() {
     {
       id: 1,
       name: "Orange Tissue Embroidered Suit Set With Sequins",
-      strikeprice:"₹9,998",
+      strikeprice: "₹9,998",
       price: "₹9,998",
       sizes: ["S", "M"],
       img: "/assets/suitsets5.jpg",
@@ -24,7 +20,7 @@ export default function TrendingSection() {
     {
       id: 2,
       name: "Wine Chinon Embroidered Suit Set With Zari",
-      strikeprice:"₹9,998",
+      strikeprice: "₹9,998",
       price: "₹7,998",
       sizes: ["XS", "S", "M", "L", "XL", "2XL"],
       img: "/assets/suitsets2.jpg",
@@ -32,7 +28,7 @@ export default function TrendingSection() {
     {
       id: 3,
       name: "Black Dola Silk Woven Design Suit Set With Mirror Work",
-      strikeprice:"₹9,998",
+      strikeprice: "₹9,998",
       price: "₹8,998",
       sizes: ["S/M", "L/XL"],
       img: "/assets/suitsets5.jpg",
@@ -40,7 +36,7 @@ export default function TrendingSection() {
     {
       id: 4,
       name: "Fuchsia Organza Zari Suit Set With Zardosi",
-      strikeprice:"₹9,998",
+      strikeprice: "₹9,998",
       price: "₹9,998",
       sizes: ["XS", "S", "L", "XL"],
       img: "/assets/suitsets1.jpg",
@@ -48,115 +44,159 @@ export default function TrendingSection() {
     {
       id: 5,
       name: "Fuchsia Organza Zari Suit Set With Zardosi",
-      strikeprice:"₹9,998",
+      strikeprice: "₹9,998",
       price: "₹9,998",
       sizes: ["XS", "S", "L", "XL"],
       img: "/assets/suitsets6.jpg",
     },
-    {
-      id: 6,
-      name: "Fuchsia Organza Zari Suit Set With Zardosi",
-      strikeprice:"₹9,998",
-      price: "₹9,998",
-      sizes: ["XS", "S", "L", "XL"],
-      img: "/assets/suitsets7.jpg",
-    },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
- const PrevArrow = ({ onClick, currentSlide }) => (
-  <div
-    className={`${styles.arrow} ${styles.leftArrow} ${
-      currentSlide === 0 ? styles.disabled : ""
-    }`}
-    onClick={currentSlide === 0 ? null : onClick}
-  >
-    <GrFormPrevious  size={18}/>
-  </div>
-);
+  useEffect(() => {
+    const resize = () => setIsMobile(window.innerWidth < 800);
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
 
-const NextArrow = ({ onClick, currentSlide, slideCount }) => (
-  <div
-    className={`${styles.arrow} ${styles.rightArrow} ${
-      currentSlide === slideCount - 4 ? styles.disabled : ""
-    }`}
-    onClick={currentSlide === slideCount - 4 ? null : onClick}
-  >
-    <MdNavigateNext size={18} />
-  </div>
-);
+  const PrevArrow = ({ onClick }) => (
+    <div className={`${styles.arrow} ${styles.leftArrow}`} onClick={onClick}>
+      <GrFormPrevious size={18} />
+    </div>
+  );
 
+  const NextArrow = ({ onClick }) => (
+    <div className={`${styles.arrow} ${styles.rightArrow}`} onClick={onClick}>
+      <MdNavigateNext size={18} />
+    </div>
+  );
 
   const sliderSettings = {
   dots: false,
   infinite: false,
-  slidesToShow: 4,
+  speed: 500,
   slidesToScroll: 1,
-  speed: 600,
   arrows: true,
-  beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
-  prevArrow: <PrevArrow currentSlide={currentSlide} />,
-  nextArrow: <NextArrow currentSlide={currentSlide} slideCount={products.length} />,
+  beforeChange: (_, next) => setCurrentSlide(next),
+  prevArrow: <PrevArrow />,
+  nextArrow: <NextArrow />,
+
+  slidesToShow: 4, // ONLY for very large screens
+
+  responsive: [
+    {
+      breakpoint: 1400, // 👈 MacBook, 1280px, 1366px
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 1024, // 👈 iPad landscape / small laptop
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 800, // 👈 mobile handled separately
+      settings: "unslick",
+    },
+  ],
 };
+
 
   return (
     <section className="standard-padding">
-      <div className="container">
-        <div className={styles.wrapper}>
-          {/* LEFT SIDE CONTENT */}
-          <div className={styles.left}>
-            <h2 className={styles.heading}>Trending Styles You’ll Love</h2>
-            <p className={styles.subheading}>
-              Your most-loved outfits, refreshed for the season.
-            </p>
 
-            <div className={styles.models}>
-              <button className={styles.btn}>
-                <span className={styles.description}>SHOP NOW</span>
-              </button>
-            </div>
+      <div className={styles.wrapper}>
+
+        {/* LEFT */}
+        <div className={styles.left}>
+          <h2 className={`${styles.heading} heading`}>Trending Styles You’ll Love</h2>
+          <p className="desc">
+            Your most-loved outfits, refreshed for the season.
+          </p>
+
+          {/* Desktop button */}
+          <div className={styles.models}>
+            <button className={styles.btn}>SHOP NOW</button>
           </div>
+        </div>
 
-          {/* RIGHT SIDE SLIDER */}
-          <div className={styles.right}>
+        {/* RIGHT */}
+        <div className={styles.right}>
+
+          {/* DESKTOP SLIDER */}
+          {!isMobile && (
             <Slider {...sliderSettings}>
-              {products.map((product) => (
-                <div key={product.id} className={styles.card}>
-                  <div className={styles.imgWrap}>
-                    <Image src={product.img} className={styles.productImg} width={100} height={100} unoptimized />
-
-                    <button className={styles.wishlistBtn}>
-                      <FaRegHeart size={18} />
-                    </button>
-
-                    <span className={styles.badge}>Save 40%</span>
-
-                    <div className={styles.cartCircle}>
-                      <RiShoppingBagLine size={18} />
-                    </div>
-                  </div>
-
-                  <p className={styles.productName}>{product.name}</p>
-                  
-                  <div className="d-flex justify-content-start align-items-center gap-2">
-                    <p className={styles.strikeprice}>{product.strikeprice}</p>
-                    <p className={styles.price}>{product.price}</p>
-                  </div>
-
-                  <p className={styles.sizeList}>
-  {product.sizes.map((s, idx) => (
-    <span key={idx} className={styles.sizeItem}>
-      {s}
-    </span>
-  ))}
-</p>
+              {products.map((p) => (
+                <div key={p.id} className={styles.card}>
+                  <ProductCard product={p} />
                 </div>
               ))}
             </Slider>
-          </div>
+          )}
+
+          {/* MOBILE SCROLL */}
+          {isMobile && (
+            <div className={styles.mobileScroll}>
+              {products.map((p) => (
+                <div key={p.id} className={styles.mobileCard}>
+                  <ProductCard product={p} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
+
+      {/* MOBILE SHOP BUTTON */}
+      {isMobile && (
+        <div className={styles.mobileShopBtn}>
+          <button className={styles.btn}>SHOP NOW</button>
+        </div>
+      )}
+
     </section>
   );
 }
+
+/* ================= CARD COMPONENT ================= */
+
+const ProductCard = ({ product }) => (
+  <>
+    <div className={styles.imgWrap}>
+      <Image
+        src={product.img}
+        alt={product.name}
+        fill
+        className={styles.productImg}
+        sizes="(max-width: 768px) 80vw, 25vw"
+      />
+
+      <button className={styles.wishlistBtn}>
+        <FaRegHeart size={16} />
+      </button>
+
+      <span className={styles.badge}>Save 40%</span>
+
+      <div className={styles.cartCircle}>
+        <RiShoppingBagLine size={16} />
+      </div>
+    </div>
+
+    <p className={styles.productName}>{product.name}</p>
+
+    <div className={styles.priceRow}>
+      <span className={styles.strikeprice}>{product.strikeprice}</span>
+      <span className={styles.price}>{product.price}</span>
+    </div>
+
+    <div className={styles.sizeList}>
+      {product.sizes.map((s, i) => (
+        <span key={i} className={styles.sizeItem}>{s}</span>
+      ))}
+    </div>
+  </>
+);

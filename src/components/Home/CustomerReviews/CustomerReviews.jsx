@@ -56,20 +56,43 @@ export default function CustomerReviews() {
   const stopAutoplay = () => {
     sliderRef.current?.slickPause();
   };
+  const [slidesToShow, setSlidesToShow] = useState(4);
 
-  const settings = {
-    arrows: false,
-    speed: 600,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    responsive: [
-      { breakpoint: 1000, settings: { slidesToShow: 2, infinite: true } },
-      { breakpoint: 600, settings: { slidesToShow: 1, infinite: true } },
-    ],
-  };
+  useEffect(() => {
+    const updateSlides = () => {
+      const width = window.innerWidth;
+
+      if (width < 600) {
+        setSlidesToShow(1.02);
+      } else if (width < 800) {
+        setSlidesToShow(2);
+      } else if (width < 1024) {
+        setSlidesToShow(3);
+      } else {
+        setSlidesToShow(4);
+      }
+    };
+
+    updateSlides();
+    window.addEventListener("resize", updateSlides);
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
+const settings = {
+  arrows: false,
+  autoplay: true,
+  autoplaySpeed: 2500,
+  speed: 600,
+  infinite: true,
+
+  slidesToScroll: 1,
+  slidesToShow: 1,          // still required
+  variableWidth: true,      // 🔥 MOST IMPORTANT
+
+  beforeChange: (_, next) => setSlideIndex(next),
+};
+
+
 
   return (
     <div className={`${styles.packagesBox}`}>
@@ -82,9 +105,8 @@ export default function CustomerReviews() {
         {/* ARROWS */}
         <div className="d-flex gap-2">
           <div
-            className={`${styles.customSliderArrows} ${
-              slideIndex === 0 ? "" : styles.active
-            }`}
+            className={`${styles.customSliderArrows} ${slideIndex === 0 ? "" : styles.active
+              }`}
             onClick={() => {
               stopAutoplay();
               sliderRef.current?.slickPrev();
@@ -108,38 +130,32 @@ export default function CustomerReviews() {
       {/* Slider */}
       <div className={styles.packagesContainer}>
         <Slider ref={sliderRef} {...settings}>
-          {reviews.map((rev, index) => (
-            <div key={index} className={styles.packageItemdiv}>
-              <div className={styles.packageItem}>
-                <div className={styles.reviewCard}>
-                  {/* Profile Image */}
-                  {/* <div className={styles.reviewImgWrapper}> */}
-                    <Image
-                      src={rev.img}
-                      alt={rev.name}
-                      
-                      className={`${styles.reviewImg} rounded-2`}
-                      width={100} height={100}
-                    />
-                  {/* </div> */}
+  {reviews.map((rev, index) => (
+    <div key={index} style={{ width: 220 }}>
+      <div className={styles.packageItem}>
+        <div className={styles.reviewCard}>
+          <Image
+            src={rev.img}
+            alt={rev.name}
+            width={100}
+            height={100}
+            className={styles.reviewImg}
+          />
 
-                  {/* Stars */}
-                  <div className={styles.stars}>
-                    {Array.from({ length: rev.rating }).map((_, i) => (
-                      <span key={i} className={styles.star}>★</span>
-                    ))}
-                  </div>
+          <div className={styles.stars}>
+            {Array.from({ length: rev.rating }).map((_, i) => (
+              <span key={i} className={styles.star}>★</span>
+            ))}
+          </div>
 
-                  {/* Review Text */}
-                  <p className={styles.reviewText}>“{rev.text}”</p>
+          <p className={styles.reviewText}>“{rev.text}”</p>
+          <p className={styles.reviewName}>— {rev.name}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</Slider>
 
-                  {/* Name */}
-                  <p className={styles.reviewName}>— {rev.name}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
       </div>
     </div>
   );

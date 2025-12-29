@@ -1,7 +1,7 @@
 .footer {
   background: #faeef2;
-  padding: 60px 0 30px;
-  margin-top: 60px;
+  /* padding: 60px 0 30px; */
+  /* margin-top: 60px; */
 }
 
 .logoimg {
@@ -126,5 +126,33 @@
 
   .newsletter {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .text {
+    text-align: left;
+  }
+
+  .col {
+    gap: 4px;
+  }
+
+  .socials {
+    margin-top: 0px;
+  }
+
+  .topRow {
+    text-align: left;
+    gap: 25px;
+  }
+
+  .bottomRow p {
+    margin-bottom: 0px;
+  }
+
+  .bottomRow {
+    margin-top: 23px;
+    padding-top: 8px;
   }
 }
