@@ -1,3 +1,6 @@
+/* #fea781
+#5b0f2d */
+
 @font-face {
   font-family: "Allrounder Grotesk Test Bold";
   src: url("../../public/fonts/AllrounderGroteskTest-Bold.otf") format("opentype");
@@ -27,6 +30,7 @@ body {
   background-color: #fafafa !important;
   color: black;
   font-family: "Allrounder Grotesk Test Regular" !important;
+  /* overflow-x: hidden; */
 }
 
 
@@ -41,9 +45,7 @@ a {
   text-decoration: none;
 }
 
-.pageWithFixedNavbar {
-  padding-top: 72px;
-}
+
 
 .standard-padding {
   padding: 35px 120px;
@@ -87,6 +89,10 @@ a {
   .standard-padding {
     padding: 30px 40px;
   }
+
+  .desc {
+    text-align: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -102,5 +108,5 @@ a {
     font-size: 14px;
     margin-bottom: 20px;
   }
-  
+
 }

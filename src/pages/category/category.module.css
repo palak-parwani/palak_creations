@@ -1,0 +1,95 @@
+/* ==================== CATEGORY HEADING ==================== */
+.categoryHeading {
+    text-align: center;
+    margin: 22px 0 22px;
+    background: #80808017;
+    padding: 25px;
+}
+
+.categoryHeading h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #222;
+    margin-bottom: 0px;
+}
+
+
+/* ==================== CONTENT PADDING ==================== */
+.contentPadding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 90px;
+}
+.breadcrumb{
+    padding: 10px 10px;
+}
+
+/* ==================== FILTER BOX (STICKY) ==================== */
+.filterbox {
+    width: 20%;
+    min-width: 220px;
+    position: sticky;
+    top: 90px;
+    align-self: flex-start;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    padding-right: 0px;
+}
+
+/* Custom scrollbar for filter */
+.filterbox::-webkit-scrollbar {
+    width: 6px;
+}
+
+.filterbox::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.filterbox::-webkit-scrollbar-thumb {
+    background: #b41935;
+    border-radius: 10px;
+}
+
+.filterbox::-webkit-scrollbar-thumb:hover {
+    background: #8b1428;
+}
+
+/* ==================== PRODUCT BOX ==================== */
+.productbox {
+    width: 80%;
+    flex: 1;
+}
+
+/* ==================== MOBILE RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .contentPadding {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        flex-direction: column;
+    }
+
+    .categoryHeading h1 {
+        font-size: 22px;
+    }
+
+    /* Make filter non-sticky on mobile */
+    .filterbox {
+        width: 100%;
+        position: relative;
+        top: 0;
+        max-height: none;
+        overflow-y: visible;
+        margin-bottom: 20px;
+        padding-right: 0;
+    }
+
+    .productbox {
+        width: 100%;
+    }
+}

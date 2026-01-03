@@ -8,14 +8,16 @@ import {
   FiHeart,
   FiX,
 } from "react-icons/fi";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import styles from "./Navbar.module.css";
 import LoginModal from "../LoginModal/LoginModal";
 import Link from "next/link";
 import CartSidebar from "../CartSidebar/CartSidebar";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useRouter } from "next/router";
 
 export default function TopNavbar() {
+  const router = useRouter();
   const [activeMenu, setActiveMenu] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
   const [showCart, setShowCart] = useState(false);
@@ -25,6 +27,7 @@ export default function TopNavbar() {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
 
+  const isWishlistPage = router.pathname === "/wishlist";
 
   const menuItems = [
     {
@@ -110,7 +113,7 @@ export default function TopNavbar() {
 
       {/* ================= NAVBAR ================= */}
       <Navbar expand="lg" className={styles.navbar}>
-        <div className={`d-flex align-items-center justify-content-between standard-padding ${styles.padding}`}>
+        <div className={`d-flex align-items-center justify-content-between w-100 standard-padding ${styles.padding}`}>
           {/* LOGO */}
           <Navbar.Brand href="/">
             <img
@@ -186,9 +189,12 @@ export default function TopNavbar() {
             />
 
             <Link href="/wishlist">
-              <FiHeart size={20} />
+              {isWishlistPage ? (
+                <FaHeart size={20} color="red" style={{ transition: "0.3s" }} />
+              ) : (
+                <FiHeart size={20} />
+              )}
             </Link>
-
             {/* 🛒 CART ICON (UNCHANGED) */}
             <FaShoppingCart onClick={() => setShowCart(true)} size={18} />
 

@@ -74,36 +74,36 @@ export default function TrendingSection() {
   );
 
   const sliderSettings = {
-  dots: false,
-  infinite: false,
-  speed: 500,
-  slidesToScroll: 1,
-  arrows: true,
-  beforeChange: (_, next) => setCurrentSlide(next),
-  prevArrow: <PrevArrow />,
-  nextArrow: <NextArrow />,
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToScroll: 1,
+    arrows: true,
+    beforeChange: (_, next) => setCurrentSlide(next),
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
 
-  slidesToShow: 4, // ONLY for very large screens
+    slidesToShow: 4, // ONLY for very large screens
 
-  responsive: [
-    {
-      breakpoint: 1400, // 👈 MacBook, 1280px, 1366px
-      settings: {
-        slidesToShow: 3,
+    responsive: [
+      {
+        breakpoint: 1400, // 👈 MacBook, 1280px, 1366px
+        settings: {
+          slidesToShow: 3,
+        },
       },
-    },
-    {
-      breakpoint: 1024, // 👈 iPad landscape / small laptop
-      settings: {
-        slidesToShow: 3,
+      {
+        breakpoint: 1024, // 👈 iPad landscape / small laptop
+        settings: {
+          slidesToShow: 3,
+        },
       },
-    },
-    {
-      breakpoint: 800, // 👈 mobile handled separately
-      settings: "unslick",
-    },
-  ],
-};
+      {
+        breakpoint: 800, // 👈 mobile handled separately
+        settings: "unslick",
+      },
+    ],
+  };
 
 
   return (
@@ -114,7 +114,7 @@ export default function TrendingSection() {
         {/* LEFT */}
         <div className={styles.left}>
           <h2 className={`${styles.heading} heading`}>Trending Styles You’ll Love</h2>
-          <p className="desc">
+          <p className={`desc ${styles.desc}`}>
             Your most-loved outfits, refreshed for the season.
           </p>
 

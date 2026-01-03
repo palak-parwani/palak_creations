@@ -1,9 +1,7 @@
-// ============================================
-// FilterSidebar.js
-// ============================================
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import styles from "./FilterSidebar.module.css";
+import { CiFilter } from "react-icons/ci";
 
 const FilterSidebar = ({ category, subcategory }) => {
   const [expandedSections, setExpandedSections] = useState({
@@ -12,6 +10,9 @@ const FilterSidebar = ({ category, subcategory }) => {
     categories: true,
     price: true,
     material: false,
+    pattern: false,
+    sleeves: false,
+    occassion: false,
   });
 
   const [priceRange, setPriceRange] = useState([599, 3999]);
@@ -19,7 +20,29 @@ const FilterSidebar = ({ category, subcategory }) => {
     discount: [],
     size: [],
     categories: [],
+    pattern: [],
+    material: [],
+    sleeves: [],
+    occassion: [],
   });
+
+  const sliderTrackRef = useRef(null);
+  const minPrice = 599;
+  const maxPrice = 3999;
+
+  // Update slider track background dynamically
+  useEffect(() => {
+    if (sliderTrackRef.current) {
+      const percentMin = ((priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100;
+      const percentMax = ((priceRange[1] - minPrice) / (maxPrice - minPrice)) * 100;
+      
+      sliderTrackRef.current.style.background = `linear-gradient(to right, 
+        #ddd ${percentMin}%, 
+        #b41935 ${percentMin}%, 
+        #b41935 ${percentMax}%, 
+        #ddd ${percentMax}%)`;
+    }
+  }, [priceRange]);
 
   const toggleSection = (section) => {
     setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
@@ -35,8 +58,15 @@ const FilterSidebar = ({ category, subcategory }) => {
   };
 
   const handlePriceChange = (e, index) => {
+    const newValue = parseInt(e.target.value);
     const newRange = [...priceRange];
-    newRange[index] = parseInt(e.target.value);
+    
+    if (index === 0) {
+      newRange[0] = Math.min(newValue, priceRange[1]);
+    } else {
+      newRange[1] = Math.max(newValue, priceRange[0]);
+    }
+    
     setPriceRange(newRange);
   };
 
@@ -63,7 +93,6 @@ const FilterSidebar = ({ category, subcategory }) => {
     { label: "KURTA & SUITS SETS", count: 225 },
     { label: "CO-ORD SETS", count: 225 },
     { label: "DRESSES", count: 225 },
-    { label: "KURTIS", count: 225 },
   ];
 
   const pattern = [
@@ -106,19 +135,15 @@ const FilterSidebar = ({ category, subcategory }) => {
 
   return (
     <div className={styles.filterSidebar}>
-      <h4 className="ps-3 heading text-start">FILTERS</h4>
+      <div className={styles.filter}>
+        <span className={styles.filterhead}> <CiFilter size={20} /> Filters</span>
+      </div>
+      
       {/* Discount Filter */}
       <div className={styles.filterSection}>
-        <div
-          className={styles.filterHeader}
-          onClick={() => toggleSection("discount")}
-        >
+        <div className={styles.filterHeader} onClick={() => toggleSection("discount")}>
           <h6 className={styles.filterTitle}>DISCOUNT</h6>
-          {expandedSections.discount ? (
-            <ChevronUp size={16} />
-          ) : (
-            <ChevronDown size={16} />
-          )}
+          {expandedSections.discount ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </div>
         {expandedSections.discount && (
           <div className={styles.filterContent}>
@@ -127,9 +152,7 @@ const FilterSidebar = ({ category, subcategory }) => {
                 <input
                   type="checkbox"
                   className={styles.checkbox}
-                  onChange={() =>
-                    handleFilterChange("discount", discount.value)
-                  }
+                  onChange={() => handleFilterChange("discount", discount.value)}
                   checked={selectedFilters.discount.includes(discount.value)}
                 />
                 <span className={styles.checkboxText}>
@@ -143,16 +166,9 @@ const FilterSidebar = ({ category, subcategory }) => {
 
       {/* Size Filter */}
       <div className={styles.filterSection}>
-        <div
-          className={styles.filterHeader}
-          onClick={() => toggleSection("size")}
-        >
+        <div className={styles.filterHeader} onClick={() => toggleSection("size")}>
           <h6 className={styles.filterTitle}>SIZE</h6>
-          {expandedSections.size ? (
-            <ChevronUp size={16} />
-          ) : (
-            <ChevronDown size={16} />
-          )}
+          {expandedSections.size ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </div>
         {expandedSections.size && (
           <div className={styles.filterContent}>
@@ -175,16 +191,9 @@ const FilterSidebar = ({ category, subcategory }) => {
 
       {/* Price Range Filter */}
       <div className={styles.filterSection}>
-        <div
-          className={styles.filterHeader}
-          onClick={() => toggleSection("price")}
-        >
+        <div className={styles.filterHeader} onClick={() => toggleSection("price")}>
           <h6 className={styles.filterTitle}>PRICE</h6>
-          {expandedSections.price ? (
-            <ChevronUp size={16} />
-          ) : (
-            <ChevronDown size={16} />
-          )}
+          {expandedSections.price ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </div>
         {expandedSections.price && (
           <div className={styles.filterContent}>
@@ -194,6 +203,8 @@ const FilterSidebar = ({ category, subcategory }) => {
                 value={priceRange[0]}
                 onChange={(e) => handlePriceChange(e, 0)}
                 className={styles.priceInput}
+                min={minPrice}
+                max={maxPrice}
               />
               <span className={styles.priceSeparator}>-</span>
               <input
@@ -201,21 +212,24 @@ const FilterSidebar = ({ category, subcategory }) => {
                 value={priceRange[1]}
                 onChange={(e) => handlePriceChange(e, 1)}
                 className={styles.priceInput}
+                min={minPrice}
+                max={maxPrice}
               />
             </div>
             <div className={styles.priceRangeSlider}>
+              <div ref={sliderTrackRef} className={styles.sliderTrack}></div>
               <input
                 type="range"
-                min="599"
-                max="3999"
+                min={minPrice}
+                max={maxPrice}
                 value={priceRange[0]}
                 onChange={(e) => handlePriceChange(e, 0)}
                 className={styles.rangeInput}
               />
               <input
                 type="range"
-                min="599"
-                max="3999"
+                min={minPrice}
+                max={maxPrice}
                 value={priceRange[1]}
                 onChange={(e) => handlePriceChange(e, 1)}
                 className={styles.rangeInput}
@@ -231,16 +245,9 @@ const FilterSidebar = ({ category, subcategory }) => {
 
       {/* Categories Filter */}
       <div className={styles.filterSection}>
-        <div
-          className={styles.filterHeader}
-          onClick={() => toggleSection("categories")}
-        >
+        <div className={styles.filterHeader} onClick={() => toggleSection("categories")}>
           <h6 className={styles.filterTitle}>CATEGORIES</h6>
-          {expandedSections.categories ? (
-            <ChevronUp size={16} />
-          ) : (
-            <ChevronDown size={16} />
-          )}
+          {expandedSections.categories ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </div>
         {expandedSections.categories && (
           <div className={styles.filterContent}>
@@ -261,18 +268,11 @@ const FilterSidebar = ({ category, subcategory }) => {
         )}
       </div>
 
-      {/* pattern Filter */}
+      {/* Pattern Filter */}
       <div className={styles.filterSection}>
-        <div
-          className={styles.filterHeader}
-          onClick={() => toggleSection("pattern")}
-        >
+        <div className={styles.filterHeader} onClick={() => toggleSection("pattern")}>
           <h6 className={styles.filterTitle}>PATTERN</h6>
-          {expandedSections.pattern ? (
-            <ChevronUp size={16} />
-          ) : (
-            <ChevronDown size={16} />
-          )}
+          {expandedSections.pattern ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </div>
         {expandedSections.pattern && (
           <div className={styles.filterContent}>
@@ -282,7 +282,7 @@ const FilterSidebar = ({ category, subcategory }) => {
                   type="checkbox"
                   className={styles.checkbox}
                   onChange={() => handleFilterChange("pattern", pat.label)}
-                  checked={selectedFilters.categories.includes(pat.label)}
+                  checked={selectedFilters.pattern.includes(pat.label)}
                 />
                 <span className={styles.checkboxText}>
                   {pat.label} ({pat.count})
@@ -295,16 +295,9 @@ const FilterSidebar = ({ category, subcategory }) => {
 
       {/* Material Filter */}
       <div className={styles.filterSection}>
-        <div
-          className={styles.filterHeader}
-          onClick={() => toggleSection("material")}
-        >
+        <div className={styles.filterHeader} onClick={() => toggleSection("material")}>
           <h6 className={styles.filterTitle}>MATERIAL</h6>
-          {expandedSections.material ? (
-            <ChevronUp size={16} />
-          ) : (
-            <ChevronDown size={16} />
-          )}
+          {expandedSections.material ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </div>
         {expandedSections.material && (
           <div className={styles.filterContent}>
@@ -314,7 +307,7 @@ const FilterSidebar = ({ category, subcategory }) => {
                   type="checkbox"
                   className={styles.checkbox}
                   onChange={() => handleFilterChange("material", mat.label)}
-                  checked={selectedFilters.categories.includes(mat.label)}
+                  checked={selectedFilters.material.includes(mat.label)}
                 />
                 <span className={styles.checkboxText}>
                   {mat.label} ({mat.count})
@@ -325,18 +318,11 @@ const FilterSidebar = ({ category, subcategory }) => {
         )}
       </div>
 
-      {/* SLEEVES Filter */}
+      {/* Sleeves Filter */}
       <div className={styles.filterSection}>
-        <div
-          className={styles.filterHeader}
-          onClick={() => toggleSection("sleeves")}
-        >
+        <div className={styles.filterHeader} onClick={() => toggleSection("sleeves")}>
           <h6 className={styles.filterTitle}>SLEEVES</h6>
-          {expandedSections.sleeves ? (
-            <ChevronUp size={16} />
-          ) : (
-            <ChevronDown size={16} />
-          )}
+          {expandedSections.sleeves ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </div>
         {expandedSections.sleeves && (
           <div className={styles.filterContent}>
@@ -346,7 +332,7 @@ const FilterSidebar = ({ category, subcategory }) => {
                   type="checkbox"
                   className={styles.checkbox}
                   onChange={() => handleFilterChange("sleeves", sl.label)}
-                  checked={selectedFilters.categories.includes(sl.label)}
+                  checked={selectedFilters.sleeves.includes(sl.label)}
                 />
                 <span className={styles.checkboxText}>
                   {sl.label} ({sl.count})
@@ -357,18 +343,11 @@ const FilterSidebar = ({ category, subcategory }) => {
         )}
       </div>
 
-      {/* occasion Filter */}
+      {/* Occasion Filter */}
       <div className={styles.filterSection}>
-        <div
-          className={styles.filterHeader}
-          onClick={() => toggleSection("occassion")}
-        >
+        <div className={styles.filterHeader} onClick={() => toggleSection("occassion")}>
           <h6 className={styles.filterTitle}>OCCASSION</h6>
-          {expandedSections.occassion ? (
-            <ChevronUp size={16} />
-          ) : (
-            <ChevronDown size={16} />
-          )}
+          {expandedSections.occassion ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </div>
         {expandedSections.occassion && (
           <div className={styles.filterContent}>
@@ -378,7 +357,7 @@ const FilterSidebar = ({ category, subcategory }) => {
                   type="checkbox"
                   className={styles.checkbox}
                   onChange={() => handleFilterChange("occassion", oc.label)}
-                  checked={selectedFilters.categories.includes(oc.label)}
+                  checked={selectedFilters.occassion.includes(oc.label)}
                 />
                 <span className={styles.checkboxText}>
                   {oc.label} ({oc.count})

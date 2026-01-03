@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main className="pageWithFixedNavbar">
+      <main>
         <Homepage />
         {/* <Container fluid className="py-4">
         <Row>

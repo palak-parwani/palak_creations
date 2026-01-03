@@ -218,76 +218,77 @@ export default function ProductDetail() {
               />
             </div>
           </div>
-        </div>
 
-        {/* Tabs Section */}
-        <div className={styles.tabsSection}>
-          <div className={styles.tabHeaders}>
-            <button
-              className={`${styles.tabHeader} ${activeTab === 'description' ? styles.tabHeaderActive : ''}`}
-              onClick={() => setActiveTab('description')}
-            >
-              Description
-            </button>
-            <button
-              className={`${styles.tabHeader} ${activeTab === 'careGuide' ? styles.tabHeaderActive : ''}`}
-              onClick={() => setActiveTab('careGuide')}
-            >
-              Care Guide
-            </button>
-            <button
-              className={`${styles.tabHeader} ${activeTab === 'additionalInfo' ? styles.tabHeaderActive : ''}`}
-              onClick={() => setActiveTab('additionalInfo')}
-            >
-              Addition Information
-            </button>
-          </div>
 
-          <div className={styles.tabContent}>
-            {activeTab === 'description' && (
-              <div className={styles.description}>
-                <p>{product.description}</p>
-              </div>
-            )}
+          {/* Tabs Section */}
+          <div className={styles.tabsSection}>
+            <div className={styles.tabHeaders}>
+              <button
+                className={`${styles.tabHeader} ${activeTab === 'description' ? styles.tabHeaderActive : ''}`}
+                onClick={() => setActiveTab('description')}
+              >
+                Description
+              </button>
+              <button
+                className={`${styles.tabHeader} ${activeTab === 'careGuide' ? styles.tabHeaderActive : ''}`}
+                onClick={() => setActiveTab('careGuide')}
+              >
+                Care Guide
+              </button>
+              <button
+                className={`${styles.tabHeader} ${activeTab === 'additionalInfo' ? styles.tabHeaderActive : ''}`}
+                onClick={() => setActiveTab('additionalInfo')}
+              >
+                Addition Information
+              </button>
+            </div>
 
-            {activeTab === 'careGuide' && (
-              <div className={styles.careGuide}>
-                <pre>{product.careGuide}</pre>
-              </div>
-            )}
+            <div className={styles.tabContent}>
+              {activeTab === 'description' && (
+                <div className={styles.description}>
+                  <p>{product.description}</p>
+                </div>
+              )}
 
-            {activeTab === 'additionalInfo' && (
-              <div className={styles.additionalInfo}>
-                <div className={styles.infoRow}>
-                  <strong>Net Quantity:</strong> {product.additionalInfo.netQuantity}
+              {activeTab === 'careGuide' && (
+                <div className={styles.careGuide}>
+                  <pre>{product.careGuide}</pre>
                 </div>
-                <div className={styles.infoRow}>
-                  <strong>Manufactured by:</strong><br />
-                  {product.additionalInfo.manufacturer}<br />
-                  {product.additionalInfo.address}
+              )}
+
+              {activeTab === 'additionalInfo' && (
+                <div className={styles.additionalInfo}>
+                  <div className={styles.infoRow}>
+                    <strong>Net Quantity:</strong> {product.additionalInfo.netQuantity}
+                  </div>
+                  <div className={styles.infoRow}>
+                    <strong>Manufactured by:</strong><br />
+                    {product.additionalInfo.manufacturer}<br />
+                    {product.additionalInfo.address}
+                  </div>
+                  <div className={styles.infoRow}>
+                    <strong>Country of Origin:</strong> {product.additionalInfo.country}
+                  </div>
+                  <div className={styles.infoRow}>
+                    <strong>Customer Care Address:</strong><br />
+                    {product.additionalInfo.manufacturer}<br />
+                    {product.additionalInfo.address}
+                  </div>
+                  <div className={styles.infoRow}>
+                    <strong>Email:</strong>{' '}
+                    <a href={`mailto:${product.additionalInfo.email}`} className={styles.link}>
+                      {product.additionalInfo.email}
+                    </a>
+                  </div>
+                  <div className={styles.infoRow}>
+                    <strong>Phone:</strong>{' '}
+                    <a href={`tel:${product.additionalInfo.phone}`} className={styles.link}>
+                      {product.additionalInfo.phone}
+                    </a>
+                  </div>
                 </div>
-                <div className={styles.infoRow}>
-                  <strong>Country of Origin:</strong> {product.additionalInfo.country}
-                </div>
-                <div className={styles.infoRow}>
-                  <strong>Customer Care Address:</strong><br />
-                  {product.additionalInfo.manufacturer}<br />
-                  {product.additionalInfo.address}
-                </div>
-                <div className={styles.infoRow}>
-                  <strong>Email:</strong>{' '}
-                  <a href={`mailto:${product.additionalInfo.email}`} className={styles.link}>
-                    {product.additionalInfo.email}
-                  </a>
-                </div>
-                <div className={styles.infoRow}>
-                  <strong>Phone:</strong>{' '}
-                  <a href={`tel:${product.additionalInfo.phone}`} className={styles.link}>
-                    {product.additionalInfo.phone}
-                  </a>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -299,7 +300,7 @@ export default function ProductDetail() {
         cartItems={cartItems}
         setCartItems={setCartItems}
       /> */}
-     
+
     </>
   );
 }

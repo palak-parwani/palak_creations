@@ -1,13 +1,36 @@
+/* ==================== FILTER SIDEBAR ==================== */
 .filterSidebar {
-  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   padding: 0;
+  background: white;
+  border-radius: 8px;
+}
+.filterhead{
+  border: 1px solid #00000024;
+  border-radius: 4px;
+  padding: 5px;
+  width: auto;
+
+}
+.filter{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 12px;
+  padding-top: 5px;
 }
 
+/* ==================== FILTER SECTION ==================== */
 .filterSection {
   border-bottom: 1px solid #e0e0e0;
   padding: 20px 0;
 }
 
+.filterSection:last-child {
+  border-bottom: none;
+}
+
+/* ==================== FILTER HEADER ==================== */
 .filterHeader {
   display: flex;
   justify-content: space-between;
@@ -30,6 +53,7 @@
   color: #333;
 }
 
+/* ==================== FILTER CONTENT ==================== */
 .filterContent {
   padding: 15px 15px 0;
   animation: slideDown 0.3s ease;
@@ -46,6 +70,7 @@
   }
 }
 
+/* ==================== CHECKBOX STYLES ==================== */
 .checkboxLabel {
   display: flex;
   align-items: center;
@@ -63,7 +88,7 @@
   height: 16px;
   margin-right: 10px;
   cursor: pointer;
-  accent-color: #000;
+  accent-color: #b41935;
 }
 
 .checkboxText {
@@ -71,7 +96,7 @@
   color: #333;
 }
 
-/* Price Range Styles */
+/* ==================== PRICE RANGE STYLES ==================== */
 .priceInputs {
   display: flex;
   align-items: center;
@@ -90,7 +115,7 @@
 
 .priceInput:focus {
   outline: none;
-  border-color: #000;
+  border-color: #b41935;
 }
 
 .priceSeparator {
@@ -98,19 +123,24 @@
   font-weight: 500;
 }
 
+/* ==================== PRICE RANGE SLIDER ==================== */
 .priceRangeSlider {
   position: relative;
   height: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
-.priceRangeSlider::before {
-  content: '';
+/* Colored slider track */
+.sliderTrack {
   position: absolute;
-  height: 5px;
   width: 100%;
-  background: #ddd;
+  height: 5px;
+  background: linear-gradient(to right, #ddd 0%, #b41935 0%, #b41935 100%, #ddd 100%);
   border-radius: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background 0.1s ease;
 }
 
 .rangeInput {
@@ -121,58 +151,98 @@
   pointer-events: none;
   -webkit-appearance: none;
   appearance: none;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
+/* ==================== CHROME/SAFARI/EDGE SLIDER STYLES ==================== */
 .rangeInput::-webkit-slider-thumb {
   -webkit-appearance: none;
   pointer-events: all;
-  width: 15px;
-  height: 15px;
-  background: #000;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border: 3px solid #b41935;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(180, 25, 53, 0.3);
+  position: relative;
+  z-index: 3;
 }
 
 .rangeInput::-webkit-slider-thumb:hover {
   transform: scale(1.2);
+  box-shadow: 0 3px 10px rgba(180, 25, 53, 0.4);
 }
 
+.rangeInput::-webkit-slider-thumb:active {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(180, 25, 53, 0.5);
+}
+
+/* ==================== FIREFOX SLIDER STYLES ==================== */
 .rangeInput::-moz-range-thumb {
   pointer-events: all;
-  width: 15px;
-  height: 15px;
-  background: #000;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border: 3px solid #b41935;
   border-radius: 50%;
   cursor: pointer;
-  border: none;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(180, 25, 53, 0.3);
+  position: relative;
+  z-index: 3;
 }
 
 .rangeInput::-moz-range-thumb:hover {
   transform: scale(1.2);
+  box-shadow: 0 3px 10px rgba(180, 25, 53, 0.4);
 }
 
+.rangeInput::-moz-range-thumb:active {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(180, 25, 53, 0.5);
+}
+
+.rangeInput::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
+/* ==================== PRICE LABELS ==================== */
 .priceLabels {
   display: flex;
   justify-content: space-between;
   font-size: 13px;
   color: #666;
   margin-top: 5px;
+  font-weight: 500;
 }
 
-/* Responsive Design */
+/* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 768px) {
   .filterSidebar {
     margin-bottom: 30px;
   }
-  
+
   .filterSection {
     padding: 15px 0;
   }
-  
+
   .priceInput {
     width: 80px;
     font-size: 13px;
+  }
+  
+  .rangeInput::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .rangeInput::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
   }
 }

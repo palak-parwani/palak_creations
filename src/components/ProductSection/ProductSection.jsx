@@ -114,7 +114,41 @@ const ProductSection = ({ category, subcategory }) => {
       rating: 5,
       reviews: 15,
       badges: ['NEW', 'EXTRA 20% OFF']
-    }
+    },
+    {
+      id: 'elegant-white-dress-008',
+      name: 'ELEGANT WHITE DRESS',
+      image: '/assets/cord2.jpg',
+      originalPrice: 4299,
+      salePrice: 1499,
+      discount: '65% off',
+      rating: 5,
+      reviews: 15,
+      badges: ['NEW', 'EXTRA 20% OFF']
+    },
+    {
+      id: 'elegant-white-dress-008',
+      name: 'ELEGANT WHITE DRESS',
+      image: '/assets/cord2.jpg',
+      originalPrice: 4299,
+      salePrice: 1499,
+      discount: '65% off',
+      rating: 5,
+      reviews: 15,
+      badges: ['NEW', 'EXTRA 20% OFF']
+    },
+    {
+      id: 'elegant-white-dress-008',
+      name: 'ELEGANT WHITE DRESS',
+      image: '/assets/cord2.jpg',
+      originalPrice: 4299,
+      salePrice: 1499,
+      discount: '65% off',
+      rating: 5,
+      reviews: 15,
+      badges: ['NEW', 'EXTRA 20% OFF']
+    },
+    
   ];
 
   return (

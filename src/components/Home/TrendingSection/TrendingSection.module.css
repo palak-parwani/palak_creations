@@ -177,6 +177,9 @@
 .right {
   width: 75%;
 }
+.desc{
+  text-align: left;
+}
 
 @media (max-width: 1400px) {
   .right {
@@ -205,6 +208,9 @@
   .right {
     width: 100% !important;
   }
+  .desc{
+  text-align: center;
+}
 
   .left {
     width: 100% !important;

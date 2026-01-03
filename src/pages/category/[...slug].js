@@ -4,10 +4,11 @@ import FilterSidebar from "../../components/FilterSidebar/FilterSidebar";
 import ProductSection from "../../components/ProductSection/ProductSection";
 import TopNavbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import styles from './category.module.css';
 
 export default function CategoryPage() {
   const router = useRouter();
-
 
   if (!router.isReady) return null;
 
@@ -16,27 +17,49 @@ export default function CategoryPage() {
   const category = slug?.[0] || null;
   const subcategory = slug?.[1] || null;
 
+  const pageTitle = subcategory || category;
+
+  const formatText = (text) =>
+    text?.replaceAll("-", " ");
+
   return (
-    <Container fluid className="pt-4  pageWithFixedNavbar">
-      <main className="pageWithFixedNavbar">
+    <div className={`${styles.pageWrapper}`}>
+      <main className={styles.pageWrapper}>
         <TopNavbar />
-        {/* <h2 className="text-capitalize">
-          {subcategory
-            ? subcategory.replaceAll("-", " ")
-            : category?.replaceAll("-", " ")}
-        </h2> */}
 
-        <Row className="px-5">
-          <Col md={3}>
-            <FilterSidebar category={category} subcategory={subcategory} />
-          </Col>
+        {/*  Breadcrumb */}
+        <div className="standard-padding pb-0">
+          <Breadcrumbs
+            category={category}
+            subcategory={subcategory}
+          />
+        </div>
 
-          <Col md={9}>
-            <ProductSection category={category} subcategory={subcategory} />
-          </Col>
+        {/* 🔹 Center Heading */}
+        <div className={styles.categoryHeading}>
+          <h1>{formatText(pageTitle)}</h1>
+          
+        </div>
+
+        {/* 🔹 Filters + Products */}
+        <Row className={styles.contentPadding}>
+          <div className={styles.filterbox}>
+            <FilterSidebar
+              category={category}
+              subcategory={subcategory}
+            />
+          </div>
+
+          <div className={styles.productbox}>
+            <ProductSection
+              category={category}
+              subcategory={subcategory}
+            />
+          </div>
         </Row>
+
         <Footer />
       </main>
-    </Container>
+    </div>
   );
 }

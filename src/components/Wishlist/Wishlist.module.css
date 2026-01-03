@@ -1,18 +1,99 @@
-.card {
-  border-radius: 12px;
-  background: #fff;
-  transition: transform .18s ease, box-shadow .18s ease;
+.heading{
+  font-size: 35px;
+  font-weight: 900;
 }
-.card:hover { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
 
-.imgWrap { width: 100%; height: 260px; overflow: hidden; border-radius: 8px; }
-.img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wrapper {
+  max-width: 1300px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
 
-.iconBtn {
-  background: transparent;
+.title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.subTitle {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 6px;
+  letter-spacing: 1px;
+  color: #777;
+}
+
+.cardWrapper {
+  margin-top: 60px;
+  display: flex;
+}
+
+.card {
+  width: 260px;
+}
+
+.productImage {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.productInfo {
+  margin-top: 12px;
+}
+
+.productName {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 13px;
+}
+
+.discount {
+  color: #ff0000;
+  font-size: 13px;
+}
+
+.actionRow {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deleteBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartBtn {
+  flex: 1;
+  height: 42px;
+  border-radius: 8px;
   border: none;
-  color: #d9534f;
-  font-size: 1.05rem;
+  background: #f08080;
+  color: #fff;
+  font-weight: 500;
   cursor: pointer;
 }
-.iconBtn:hover { transform: scale(1.08); }
