@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import {
   FiUser,
@@ -99,6 +99,18 @@ export default function TopNavbar() {
     setActiveMobileMenu((prev) => (prev === name ? null : name));
   };
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 40);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+
 
   return (
     <>
@@ -112,7 +124,11 @@ export default function TopNavbar() {
       )}
 
       {/* ================= NAVBAR ================= */}
-      <Navbar expand="lg" className={styles.navbar}>
+      <Navbar
+  expand="lg"
+  className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}
+>
+
         <div className={`d-flex align-items-center justify-content-between w-100 standard-padding ${styles.padding}`}>
           {/* LOGO */}
           <Navbar.Brand href="/">
@@ -124,7 +140,7 @@ export default function TopNavbar() {
           </Navbar.Brand>
 
           {/* DESKTOP MENU */}
-          <Nav className="mx-auto d-none d-lg-flex gap-2 me-5 ps-5">
+          <Nav className="mx-auto d-none d-lg-flex gap-2 me-5">
             {menuItems.map((item, index) => (
               <div
                 key={index}
@@ -185,18 +201,18 @@ export default function TopNavbar() {
             <FiUser
               className="d-none d-lg-block"
               onClick={() => setShowLogin(true)}
-              size={20}
+              size={22}
             />
 
             <Link href="/wishlist">
               {isWishlistPage ? (
-                <FaHeart size={20} color="red" style={{ transition: "0.3s" }} />
+                <FaHeart size={22} color="red" style={{ transition: "0.3s" }} />
               ) : (
-                <FiHeart size={20} />
+                <FiHeart size={22} />
               )}
             </Link>
             {/* 🛒 CART ICON (UNCHANGED) */}
-            <FaShoppingCart onClick={() => setShowCart(true)} size={18} />
+            <FaShoppingCart onClick={() => setShowCart(true)} size={20} />
 
             {/* 🍔 HAMBURGER */}
             <div className="d-lg-none">

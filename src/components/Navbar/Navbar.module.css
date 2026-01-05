@@ -2,6 +2,14 @@
 .logoimg {
   width: 104px;
   height: 59px;
+  transition: transform 0.3s ease;
+}
+
+.scrolled .logoimg {
+  width: 120px;
+  height: 62px;
+  transform: scale(0.9);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.071));
 }
 
 .padding {
@@ -12,13 +20,33 @@
 /* ==================== NAVBAR ==================== */
 .navbar {
   position: sticky;
+  
   top: 0;
   z-index: 1000;
   background: #ffffff;
   padding: 5px 0;
   border-bottom: 2px solid #b41935;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition:
+    padding 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+    
 }
+
+/*  AFTER SCROLL */
+.navbar.scrolled {
+  padding: 5px 0;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 6px 18px #0000001c;
+}
+
+.scrolled {
+  padding: 6px 0;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
 
 /* Fix for scrollbar issue - apply overflow-x: clip to body */
 :global(body) {
@@ -28,12 +56,16 @@
 /* ==================== NAV LINKS ==================== */
 .navLink {
   color: #000 !important;
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.5px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   padding: 12px 8px !important;
   transition: color 0.2s ease;
+}
+
+.scrolled .navLink {
+  padding: 8px 8px !important;
 }
 
 .navLink:hover {
@@ -66,6 +98,10 @@
   pointer-events: none;
 }
 
+.scrolled .dropdownMenu {
+  margin-top: 4px;
+}
+
 .menuWrapper:hover .dropdownMenu {
   opacity: 1;
   visibility: visible;
@@ -74,7 +110,7 @@
 }
 
 .dropdownItem {
-  font-size: 14px;
+  font-size: 16px;
   color: #444;
   cursor: pointer;
   padding: 6px 4px;
@@ -118,6 +154,7 @@
   color: #444;
 }
 
+
 /* ==================== ICONS CONTAINER ==================== */
 .iconContainer {
   display: flex;
@@ -128,14 +165,15 @@
   position: relative;
 }
 
-.iconContainer > * {
+.iconContainer>* {
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.iconContainer > *:hover {
+.iconContainer>*:hover {
   color: #b41935;
   transform: scale(1.1);
 }
+
 
 /* ==================== MOBILE MENU ==================== */
 .mobileMenuOverlay {
@@ -294,6 +332,7 @@
   from {
     transform: translateY(-100%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -303,6 +342,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -312,6 +352,7 @@
   from {
     transform: translateX(100%);
   }
+
   to {
     transform: translateX(0);
   }

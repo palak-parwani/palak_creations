@@ -1,0 +1,141 @@
+.wrapper {
+  margin: 70px auto;
+  margin-top: 40px;
+}
+
+/* GRID */
+.container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* FORM CARD */
+.formCard {
+  background: #fff;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+
+.formCard h2 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #5b0f2d;
+}
+
+.subText {
+  font-size: 18px;
+  color: #666;
+  margin: 10px 0 30px;
+}
+
+/* FORM */
+.formCard label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+  color: #333;
+}
+
+.formCard input,
+.formCard textarea {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 10px;
+  border: 1.5px solid #ddd;
+  font-size: 16px;
+  margin-bottom: 22px;
+  transition: all 0.25s ease;
+}
+
+.formCard input:focus,
+.formCard textarea:focus {
+  border-color: #5b0f2d;
+  box-shadow: 0 0 0 3px rgba(91, 15, 45, 0.12);
+  outline: none;
+}
+
+.formCard button {
+  width: 100%;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  background: #5b0f2d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.formCard button:hover {
+  background: #3f0a20;
+}
+
+/* RIGHT INFO */
+.infoSection h2 {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+/* INFO CARDS */
+.infoCard {
+  display: flex;
+  gap: 20px;
+  padding: 22px;
+  border-radius: 16px;
+  border: 1.5px solid #eee;
+  margin-bottom: 22px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.infoCard:hover {
+  border-color: #5b0f2d;
+  background: rgba(254, 167, 129, 0.15);
+  transform: translateY(-4px);
+}
+
+.infoCard svg {
+  font-size: 30px;
+  color: #5b0f2d;
+  transition: transform 0.3s ease;
+}
+
+.infoCard:hover svg {
+  transform: scale(1.15);
+}
+
+.infoCard h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.infoCard p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .formCard,
+  .infoSection {
+    padding: 0;
+  }
+
+  .formCard {
+    box-shadow: none;
+  }
+}

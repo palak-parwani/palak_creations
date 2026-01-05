@@ -41,8 +41,9 @@ export default function Footer() {
           <a>Track Order</a>
           <a>Return & Refund</a>
           <a>Shipping Info</a>
-          <a>Contact Us</a>
-          <a>FAQ</a>
+          <a href=" /contactus">Contact Us</a>
+          <a href=" /faq">FAQ</a>
+          <a href="/aboutus">About Us</a>
         </div>
 
         {/* NEWSLETTER */}
@@ -60,7 +61,7 @@ export default function Footer() {
       </div>
       {/* BOTTOM ROW */}
       <div className={styles.bottomRow}>
-        <p>© {new Date().getFullYear()} Palak Creations. All Rights Reserved.</p>
+        <p className="mb-0">© {new Date().getFullYear()} Palak Creations. All Rights Reserved.</p>
       </div>
     </footer>
   );
